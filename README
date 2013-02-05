@@ -11,3 +11,23 @@ The construction goals were:
 * Be reusable, both in terms of themselves and with reusable functions
 * Be easy to find when eding them (all becomes links in ~/bin, open all in kate)
 * Differ function from UI to adid maintain-/readability (OOP pattern inspired)
+* Ability to differ between FOSS and propietory code (this is mainy why it's now
+* managed by repo).
+
+S3 wil. differ in ability depending on which packages are installed. These are
+managed by manifests, either in this git or in another. Note that the
+mainfest-git does not have to reside on this server to use the script3-* gits.
+
+To get started:
+
+mkdir yourdir
+cd yourdir
+
+repo init \
+	-u git@github.com:mambrus/script3.git \
+	-b master \
+	-m public/minimum.xml
+
+repo sync
+
+s3/install_all.sh
