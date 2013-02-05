@@ -1,0 +1,13 @@
+                           SCRIPT3 (script tree)
+						   =====================
+
+Script3 (also shortened as s3) is a structure for keeping (mainly) scripts
+organized.
+
+The construction goals were:
+
+* All scripts should be as small as possible
+* Do only one thing per script
+* Be reusable, both in terms of themselves and with reusable functions
+* Be easy to find when eding them (all becomes links in ~/bin, open all in kate)
+* Differ function from UI to adid maintain-/readability (OOP pattern inspired)
