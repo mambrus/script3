@@ -12,5 +12,5 @@
   <project path="futil"   name="script3-futil.git" />
   <project path="src"     name="script3-src.git" />
   <project path="aosp"    name="script3-aosp.git" />
-  <project path="rd"      name="script3-rd.git" />
+  <project path="rg"      name="script3-rg.git" />
 </manifest>
