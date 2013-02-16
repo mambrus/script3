@@ -4,7 +4,7 @@
 Script3 (also shortened as s3) is a structure for keeping (mainly) scripts
 organized.
 
-The construction goals were:
+The design goals were:
 
 * All scripts should be as small as possible
 * Do only one thing per script
@@ -20,7 +20,7 @@ managed by manifests, either in this git or in another. Note that the
 mainfest-git does not have to reside on this server to use the script3-* gits.
 
 Installation:
--------------
+=============
 
 mkdir yourdir
 cd yourdir
@@ -34,25 +34,33 @@ repo sync
 
 s3/install_all.sh
 
+That's it! The probably most important commands you'll need from now on is
+
+s3.install_s3.sh	- Installs a s3 file
+s3.install_all.sh	- Installs everything from the directory you stand at and
+					  below
+s3.ssh_keygen.sh	- Establish ssh key-exchange betwen a server and client
+
 To uninstall:
--------------
+=============
 
 s3.uninstall_all.sh
 
 
-Or if you have installations from several different s3's:
+Or if you have installations from several different s3 repositories the
+following will expicitly uninstall from the right one:
 
 cd ${UNINSTALL_THIS_S3}
 s3/uninstall_all.sh
 
 
 Adding your own s3's (the s3 way):
----------------------------------
-(Note that s3 accept having any script in it's tree. Follow these guildelines if you want them to coexist in terms of the design-goals)
+==================================
+(Note that s3 accept having any script in it's tree. Follow these guildelines if
+you want them to coexist in terms of the design-goals above)
  
-This following your scripts organized by name-space.
-
-Say thet you have a script stored in 
+S3 will install scripts organized by name-space. Say thet you have a script
+stored in: 
 
 ./script3/gen/user-response.sh
 
@@ -75,8 +83,8 @@ Bowse and edit all S3's regardless of which repo they belong tow ith Kate Toolba
 bash -ic "cd ~/bin; kate -s AllMyBin $( (ls *.sh; ls *.tcl; ls *.py; ls *.awk;\
 ls *.pl; ls *.exp; ls *.gdb; ls *.cfg; ls *.ctags) | sort ) "
 
-To create files.s3:
-------------------
+To create files.s3 manually:
+---------------------------
 DIRS=$( find . -type d | egrep -v '\.git' ); for D in $DIRS; do \
       (    cd $D; ls -F | \
            grep -v README | \
@@ -86,20 +94,14 @@ DIRS=$( find . -type d | egrep -v '\.git' ); for D in $DIRS; do \
       );  done
 
 
-HOW TO GET STARTED WITH NEW SCRIPTS
-===================================
+How to begin writing new scripts:
+--------------------------------
 
-Lest say you'll have the local git in repos/script3, follow the steps below:
+Best and easiest way is to start with another script and use this one as a
+template. There is a script helping you copy and rename vital parts of the
+template:
 
-mkdir repos
-git clone git_user@kato.homelinux.org:/home/git/script3
-cd script2
-s3/install_all.sh
+futils.s3template
 
-That's it! The probably most important commands you'll need from now on is
-
-s3.install_s3.sh	- Installs a s3 file
-s3.install_all.sh	- Installs everything from the directory you stand at and
-					  below
-s3.ssh_keygen.sh	- Establish ssh key-exchange betwen a server and client
+run it with -h option for a full description of how to use it.
 
