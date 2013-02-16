@@ -12,13 +12,15 @@ The construction goals were:
 * Be easy to find when eding them (all becomes links in ~/bin, open all in kate)
 * Differ function from UI to adid maintain-/readability (OOP pattern inspired)
 * Ability to differ between FOSS and propietory code (this is mainy why it's now
-* managed by repo).
+  managed by repo).
+* Coexist with other s3 instances
 
-S3 wil. differ in ability depending on which packages are installed. These are
+S3 will differ in ability depending on which packages are installed. These are
 managed by manifests, either in this git or in another. Note that the
 mainfest-git does not have to reside on this server to use the script3-* gits.
 
-To get started:
+Installation:
+-------------
 
 mkdir yourdir
 cd yourdir
@@ -31,3 +33,73 @@ repo init \
 repo sync
 
 s3/install_all.sh
+
+To uninstall:
+-------------
+
+s3.uninstall_all.sh
+
+
+Or if you have installations from several different s3's:
+
+cd ${UNINSTALL_THIS_S3}
+s3/uninstall_all.sh
+
+
+Adding your own s3's (the s3 way):
+---------------------------------
+(Note that s3 accept having any script in it's tree. Follow these guildelines if you want them to coexist in terms of the design-goals)
+ 
+This following your scripts organized by name-space.
+
+Say thet you have a script stored in 
+
+./script3/gen/user-response.sh
+
+... this will be installed as ~/bin/gen.user-response.sh
+
+Using it in CLI mode will be logical and tab-able.
+
+You can also organize your scripts according to organization. For example:
+
+./script3/com/yourorg/you/gen/user/response.sh
+
+Which will be used as com.yourorg.you.gen.user.sh
+
+The finally installed file-names will quit long, but still locically organized, fast & easy to find & use, which is VERY useful particulary when writing script libraries (which S3 is all about).
+
+Hints:
+======
+Bowse and edit all S3's regardless of which repo they belong tow ith Kate Toolbar button. Copy & paste the following into a terminal:
+
+bash -ic "cd ~/bin; kate -s AllMyBin $( (ls *.sh; ls *.tcl; ls *.py; ls *.awk;\
+ls *.pl; ls *.exp; ls *.gdb; ls *.cfg; ls *.ctags) | sort ) "
+
+To create files.s3:
+------------------
+DIRS=$( find . -type d | egrep -v '\.git' ); for D in $DIRS; do \
+      (    cd $D; ls -F | \
+           grep -v README | \
+           grep -v 'files\.s3' | \
+           egrep '\*$' | \
+           sed -e 's/\*$//' > files.s3 \
+      );  done
+
+
+HOW TO GET STARTED WITH NEW SCRIPTS
+===================================
+
+Lest say you'll have the local git in repos/script3, follow the steps below:
+
+mkdir repos
+git clone git_user@kato.homelinux.org:/home/git/script3
+cd script2
+s3/install_all.sh
+
+That's it! The probably most important commands you'll need from now on is
+
+s3.install_s3.sh	- Installs a s3 file
+s3.install_all.sh	- Installs everything from the directory you stand at and
+					  below
+s3.ssh_keygen.sh	- Establish ssh key-exchange betwen a server and client
+
