@@ -2,6 +2,7 @@
 <manifest>
 
   <remote  name="github"
+           review="ssh://git@github.com/mambrus/"
            fetch="ssh://git@github.com/mambrus/" />
   <default revision="master"
            remote="github"
