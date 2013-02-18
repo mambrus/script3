@@ -26,8 +26,8 @@ mkdir yourdir
 cd yourdir
 
 repo init \
-	-u git@github.com:mambrus/script3.git \
-	-b master \
+	-u https://github.com/mambrus/script3.git \
+	-b public \
 	-m public/standard.xml
 
 repo sync

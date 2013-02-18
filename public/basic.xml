@@ -3,7 +3,7 @@
 
   <remote  name="github"
            review="github.com"
-           fetch="ssh://git@github.com/mambrus/" />
+           fetch="http://github.com/mambrus/" />
   <default revision="master"
            remote="github"
            sync-j="1" />
