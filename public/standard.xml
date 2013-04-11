@@ -12,6 +12,7 @@
   <project path="util"    name="script3-util.git" />
   <project path="futil"   name="script3-futil.git" />
   <project path="src"     name="script3-src.git" />
+  <project path="gdb"     name="script3-gdb.git" />
   <project path="aosp"    name="script3-aosp.git" />
   <project path="time"    name="script3-time.git" />
   <project path="rg"      name="script3-rg.git" />
