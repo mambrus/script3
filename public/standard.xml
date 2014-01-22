@@ -20,5 +20,6 @@
   <project path="screend" name="script3-screend.git" />
   <project path="xpra"    name="script3-xpra.git" />
   <project path="dvd"     name="script3-dvd.git" />
+  <project path="emb"     name="script3-emb.git" />
 
 </manifest>
